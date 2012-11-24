@@ -1,0 +1,1 @@
+paoding-rose maven项目原型
