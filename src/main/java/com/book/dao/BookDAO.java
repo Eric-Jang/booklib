@@ -3,6 +3,7 @@ package com.book.dao;
 import java.util.List;
 
 import net.paoding.rose.jade.annotation.DAO;
+import net.paoding.rose.jade.annotation.ReturnGeneratedKeys;
 import net.paoding.rose.jade.annotation.SQL;
 
 import com.book.model.Book;
@@ -67,8 +68,9 @@ public interface BookDAO {
 	@SQL("update book set name=:1.name, price=:1.price, author=:1.author where id=:1.id")
 	public void update(Book book);
 
+	@ReturnGeneratedKeys
 	@SQL("insert into book (name, price, author) values (:1.name, :1.price, :1.author)")
-	public void save(Book book);
+	public int save(Book book);
 
 	@SQL("delete from book where id = :1")
 	public void delete(long bookId);

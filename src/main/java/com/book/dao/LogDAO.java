@@ -3,6 +3,7 @@ package com.book.dao;
 import java.util.List;
 
 import net.paoding.rose.jade.annotation.DAO;
+import net.paoding.rose.jade.annotation.ReturnGeneratedKeys;
 import net.paoding.rose.jade.annotation.SQL;
 
 import com.book.model.Log;
@@ -46,8 +47,9 @@ public interface LogDAO {
 	@SQL("select id, user_name, resource_pattern, resource_id, success, remarks, create_time, ip from log where user_name=:1 order by id desc limit :2, :3")
 	public List<Log> find(String userName, int preLimit, int limit);
 
+	@ReturnGeneratedKeys
 	@SQL("insert into log (user_name, resource_pattern, resource_id, success, remarks, ip) values (:1.userName, :1.resourcePattern, :1.resourceId, :1.success, :1.remarks, :1.ip)")
-	public void save(Log log);
+	public int save(Log log);
 
 	@SQL("delete from log where id=:1")
 	public void delete(long logId);

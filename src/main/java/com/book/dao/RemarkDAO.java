@@ -3,6 +3,7 @@ package com.book.dao;
 import java.util.List;
 
 import net.paoding.rose.jade.annotation.DAO;
+import net.paoding.rose.jade.annotation.ReturnGeneratedKeys;
 import net.paoding.rose.jade.annotation.SQL;
 
 import com.book.model.Remark;
@@ -26,8 +27,9 @@ public interface RemarkDAO {
 	@SQL("delete from remark where id=:1")
 	public int delete(long remarkId);
 
-	// 返回Idenity用于获取自增生成的那个id
+	// @ReturnGeneratedKeys用于获取自增生成的那个id
 	// :1.userName表示第一个参数的userName属性
+	@ReturnGeneratedKeys
 	@SQL("insert into remark (user_name, book_id, essay) values (:1.userName, :1.bookId, :1.essay)")
-	public void save(Remark remark);
+	public int save(Remark remark);
 }
