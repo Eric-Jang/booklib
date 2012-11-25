@@ -1,15 +1,18 @@
-package com.book.controllers;
+package com.book.controllers.book;
 
 import java.util.List;
 
 import net.paoding.rose.web.Invocation;
 import net.paoding.rose.web.annotation.Param;
+import net.paoding.rose.web.annotation.Path;
 import net.paoding.rose.web.annotation.rest.Get;
 import net.paoding.rose.web.annotation.rest.Post;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.book.controllers.AdminRequired;
+import com.book.controllers.LoginRequired;
 import com.book.dao.BookDAO;
 import com.book.dao.RemarkDAO;
 import com.book.model.Book;
@@ -24,6 +27,7 @@ import com.book.util.WebUtil;
  * @Date Nov 23, 2012 12:31:38 AM
  */
 @LoginRequired
+@Path("")
 public class BookController {
 
 	private static final int PER_PAGE_LIMIT = 10;
